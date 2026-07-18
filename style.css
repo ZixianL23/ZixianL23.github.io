@@ -1,0 +1,283 @@
+:root {
+  --ink: #1b2430;
+  --ink-soft: #3d4a5c;
+  --paper: #faf9f6;
+  --paper-dim: #f0eee8;
+  --indigo: #33456b;
+  --indigo-deep: #232f4d;
+  --gold: #b8902f;
+  --line: #d8d4c8;
+  --future: #b7bcc4;
+
+  --serif: "Source Serif 4", Georgia, serif;
+  --sans: "IBM Plex Sans", -apple-system, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--indigo); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  background: linear-gradient(160deg, var(--indigo-deep) 0%, var(--indigo) 62%, #3c5178 100%);
+  color: var(--paper);
+  padding: 5.5rem 6vw 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #c9b98a;
+  margin: 0 0 1.1rem;
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(2.6rem, 5.2vw, 4rem);
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+
+.tagline {
+  font-size: 1.25rem;
+  margin: 0.2rem 0 0.15rem;
+  color: #f1ede2;
+  font-weight: 500;
+}
+
+.hero-sub {
+  font-family: var(--mono);
+  font-size: 0.92rem;
+  color: #b9c3d6;
+  margin: 0 0 1.8rem;
+}
+
+.hero-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  font-family: var(--mono);
+  font-size: 0.88rem;
+}
+
+.hero-links a {
+  color: #dfe6f2;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(223, 230, 242, 0.35);
+  width: fit-content;
+  padding-bottom: 1px;
+  transition: border-color 0.15s, color 0.15s;
+}
+.hero-links a:hover { color: var(--gold); border-color: var(--gold); }
+
+.hero-photo {
+  position: relative;
+  justify-self: center;
+}
+
+.photo-frame {
+  width: min(240px, 100%);
+  aspect-ratio: 4 / 5;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.55);
+  position: relative;
+  z-index: 2;
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+  filter: saturate(0.92) contrast(1.02);
+}
+
+.hero-node-deco {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  top: -30px;
+  right: -40px;
+  z-index: 1;
+  opacity: 0.55;
+}
+.hero-node-deco circle { fill: var(--gold); }
+.hero-node-deco line { stroke: rgba(201, 185, 138, 0.5); stroke-width: 1; }
+
+/* ---------- Sections ---------- */
+
+main { max-width: 780px; margin: 0 auto; padding: 0 6vw; position: relative; z-index: 2; }
+
+.section-label {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 0.8rem;
+}
+
+.about { padding: 4.5rem 0 3rem; }
+.about-text {
+  font-size: 1.14rem;
+  color: var(--ink-soft);
+  max-width: 62ch;
+}
+.about-text strong { color: var(--ink); font-weight: 600; }
+
+.timeline { padding: 2rem 0 4rem; }
+.timeline-heading {
+  font-family: var(--serif);
+  font-size: 1.9rem;
+  font-weight: 600;
+  margin: 0 0 2.5rem;
+}
+
+.graph { position: relative; padding-left: 2rem; }
+
+.graph-line {
+  position: absolute;
+  left: 5px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: repeating-linear-gradient(to bottom, var(--line) 0 4px, transparent 4px 9px);
+}
+
+.node {
+  position: relative;
+  padding-bottom: 2.6rem;
+}
+.node:last-child { padding-bottom: 0; }
+
+.node-dot {
+  position: absolute;
+  left: -2rem;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--indigo);
+  border: 2px solid var(--paper);
+  box-shadow: 0 0 0 1px var(--indigo);
+}
+.node-dot--future {
+  background: var(--paper);
+  box-shadow: 0 0 0 1px var(--future);
+  border: 2px dashed var(--future);
+}
+
+.node-date {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--gold);
+  margin: 0 0 0.3rem;
+  letter-spacing: 0.02em;
+}
+
+.node-card h3 {
+  font-family: var(--serif);
+  font-size: 1.22rem;
+  font-weight: 600;
+  margin: 0 0 0.4rem;
+  line-height: 1.3;
+}
+
+.node-desc {
+  color: var(--ink-soft);
+  margin: 0;
+  max-width: 58ch;
+  font-size: 0.98rem;
+}
+
+/* ---------- Contact / Footer ---------- */
+
+.contact {
+  background: var(--paper-dim);
+  margin-top: 2rem;
+  padding: 4rem 6vw 3.5rem;
+  text-align: left;
+  border-top: 1px solid var(--line);
+}
+.contact h2 {
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  margin: 0 0 1.4rem;
+}
+.contact-email, .contact-github {
+  display: block;
+  font-family: var(--mono);
+  font-size: 1rem;
+  color: var(--indigo);
+  text-decoration: none;
+  margin-bottom: 0.55rem;
+  width: fit-content;
+  border-bottom: 1px solid transparent;
+}
+.contact-email:hover, .contact-github:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.footer-note {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: #8b8878;
+  margin-top: 2rem;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 760px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+  .hero-photo { justify-self: start; margin-top: 1rem; }
+  .photo-frame { width: 160px; }
+  .hero { padding: 3.5rem 6vw 3rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
