@@ -83,53 +83,59 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  gap: 1.15rem;
 }
 
-.course-list li {
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: baseline;
-  gap: 0.6rem;
-  padding-left: 1.1rem;
+.course-row {
   position: relative;
+  padding-left: 1.1rem;
 }
-.course-list li::before {
+.course-row::before {
   content: "";
   position: absolute;
   left: 0;
-  top: 0.55em;
+  top: 0.5em;
   width: 6px;
   height: 6px;
   border-radius: 50%;
   background: var(--indigo);
 }
 
+.course-row-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+}
+
 .course-code {
   font-family: var(--mono);
   font-size: 0.85rem;
   color: var(--indigo);
-  min-width: 6.5em;
-  flex: 0 0 auto;
+  letter-spacing: 0.02em;
 }
 
 .course-title {
+  margin: 0.3rem 0 0;
   font-size: 1rem;
   color: var(--ink);
-  flex: 1 1 auto;
-  min-width: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  max-width: 58ch;
+  line-height: 1.5;
+}
+
+.grade-badge {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--ink-soft);
 }
 
 .notes-link {
+  display: inline-block;
+  margin-top: 0.4rem;
   font-family: var(--mono);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: var(--gold);
   text-decoration: none;
   border-bottom: 1px solid rgba(166, 138, 53, 0.4);
-  flex: 0 0 auto;
 }
 .notes-link:hover { border-color: var(--gold); }
 
